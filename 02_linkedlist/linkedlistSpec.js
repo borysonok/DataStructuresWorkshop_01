@@ -11,7 +11,7 @@ describe('A linked list', function() {
     expect(typeof linkedList.search).toBe('function');
   });
 
-  it('starts with head and tail falsy', function () {
+  it('starts with head and tail falsy', function() {
     expect(linkedList.head).toBeFalsy();
     expect(linkedList.tail).toBeFalsy();
     expect(linkedList.removeHead()).toBeFalsy();
@@ -23,7 +23,7 @@ describe('A linked list', function() {
     // This spec makes sure you've defined your OWN `Node`.
     expect(isNative(Node)).toBe(false);
     function isNative(fn) {
-      return (/\{\s*\[native code]\s*\}/).test('' + fn);
+      return /\{\s*\[native code]\s*\}/.test('' + fn);
     }
   });
 
@@ -114,9 +114,11 @@ describe('A linked list', function() {
   it('should be able to take strings and functions both as search inputs', function() {
     linkedList.addToTail('one');
     linkedList.addToTail('two');
-    expect(linkedList.search(function(nodeValue) {
-      return nodeValue === 'two';
-    })).toBe('two');
+    expect(
+      linkedList.search(function(nodeValue) {
+        return nodeValue === 'two';
+      })
+    ).toBe('two');
   });
 
   // This spec demonstrates the utility of the previous spec.
@@ -133,17 +135,22 @@ describe('A linked list', function() {
     linkedList.addToHead(new UserNode('David', 'david@fs.com', 'New York'));
     linkedList.addToHead(new UserNode('Paul', 'paul@yc.com', 'Mountain View'));
 
-    expect(linkedList.search(function (userNode) {
-      return userNode.name === 'Nimit';
-    }).email).toBe('nimit@fs.com');
+    expect(
+      linkedList.search(function(userNode) {
+        return userNode.name === 'Nimit';
+      }).email
+    ).toBe('nimit@fs.com');
 
-    expect(linkedList.search(function (userNode) {
-      return userNode.email === 'david@fs.com';
-    }).city).toBe('New York');
+    expect(
+      linkedList.search(function(userNode) {
+        return userNode.email === 'david@fs.com';
+      }).city
+    ).toBe('New York');
 
-    expect(linkedList.search(function (userNode) {
-      return userNode.city === 'Mountain View';
-    }).name).toBe('Paul');
+    expect(
+      linkedList.search(function(userNode) {
+        return userNode.city === 'Mountain View';
+      }).name
+    ).toBe('Paul');
   });
-
 });
